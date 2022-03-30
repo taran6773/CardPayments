@@ -1,0 +1,36 @@
+.cardDetails{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between ;
+    align-items: center;
+    max-width:'100%';
+}
+.innerCard{
+    flex:0.5;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 60px;
+    padding-top: 30px;
+    flex-direction:column;
+    align-items: flex-start;
+}
+button{
+    margin: 0 5px;
+}
+
+.edit{
+    display: flex;
+    flex-wrap: wrap;
+    flex:1;
+    flex-direction: row;
+    justify-content:space-around;
+    margin:10px;
+    border: 1px solid black;
+    padding:10px
+}
+.innerEdit{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: column;
+}
