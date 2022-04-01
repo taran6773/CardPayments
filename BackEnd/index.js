@@ -1,6 +1,6 @@
 // To connect with your mongoDB database
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/', {
+mongoose.connect('mongodb://localhost:27017/', {
     dbName: 'my_database',
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -30,26 +30,26 @@ CardPayment.createIndexes();
 const express = require('express');
 const app = express();
 const cors = require("cors");
-console.log("App listen at port 3000");
+console.log("App listen at port 5000");
 app.use(express.json());
 app.use(cors());
 app.get("/", (req, resp) => {
 
-    resp.sendFile("../src/App.js");
-    // You can check backend is working or not by 
-    // entering http://loacalhost:5000
-    
-    // If you see App is working means
-    // backend working properly
+    try {
+        CardPayment.find({}).then(
+            data=>resp.json(data)
+        )
+    } catch (error) {
+        console.log(error)
+    }
 });
 
 app.post("/register", async (req, resp) => {
     try {
-        const user = new CardPayment(req.body);
+        let user = new CardPayment(req.body);
         let result = await user.save();
         result = result.toObject();
         if (result) {
-            delete result.password;
             resp.send(req.body);
             console.log(result);
         } else {
@@ -60,4 +60,35 @@ app.post("/register", async (req, resp) => {
         resp.send("Something Went Wrong");
     }
 });
-app.listen(3000);
+
+app.post("/delete",async(req,res)=>{
+    let x=req.body
+    // const user = new CardPayment();
+    console.log(x)
+    await CardPayment.deleteOne({ cardNumber: x.card }).clone()
+    .catch(e=>{
+        console.log(e)
+    })
+    })
+
+
+app.post("/update",async(req,res)=>{
+    let y=req.body
+    // let user = new CardPayment();
+    await CardPayment.updateOne({name: y.name, expiry: y.expiry}).catch(e=>{
+        console.log(e)
+    })
+
+    // user.findOneAndUpdate({name:  }, 
+    //     {name:"Anuj"}, null, function (err, docs) {
+    //     if (err){
+    //         console.log(err)
+    //     }
+    //     else{
+    //         console.log("Original Doc : ",docs);
+    //     }
+    // });
+    })
+
+
+app.listen(5000);
