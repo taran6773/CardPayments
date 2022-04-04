@@ -16,6 +16,8 @@
 }
 button{
     margin: 0 5px;
+    background-color: maroon;
+    color: white;
 }
 
 .edit{
@@ -34,3 +36,30 @@ button{
     align-items: flex-start;
     flex-direction: column;
 }
+.accordion-button{
+    align-items: center;
+    border: 3px solid black;
+    color: maroon;
+    font-weight: 600
+}
+.accordion-button:hover{
+    background-color: gray;
+    color:black
+}
+.innerCard>p{
+    color: gray;
+  }
+  h6{
+      color: maroon;
+      font-weight: 600
+
+  }
+  .accordion-body{
+      border: 3px solid black;
+      font-weight: 600
+  }
+  .accordion-header{
+      border: 1px solid transparent;
+      margin-left: -7px;
+  }
+  

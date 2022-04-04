@@ -13,18 +13,8 @@ export default function Card({data,removeCard}) {
   const handleChange = async() => {
     let nameval = document.getElementById("editname").value;
     let dateval = document.getElementById("editdate").value;
-    // name=nameval;
-    // expiry=dateval;
-    // let result =  fetch(
-    //   'http://localhost:5000/update', {
-    //       method:"post",
-    //       // body:JSON.stringify({nameval,dateval}),
-    //       body:JSON.stringify({nameval}),
-    //       headers: {
-    //           'Content-Type': 'application/json'
-    //       }
-    //   })
     let body={
+      number:data.cardNumber,
       name:nameval,
       expiry:dateval
     }
@@ -63,7 +53,6 @@ export default function Card({data,removeCard}) {
                 {/* Div 1 */}
                 <div className="innerCard">
                   <h6>Card number</h6>
-                  {/* <p>{cardHide(cardNumber)}</p> */}
                   <p>{cardNumber.toString().match(/\d{4}/g).join("-").replace(/\d.(?=.{4})/g, "#")}</p>
                   <h6>Name of Card Holder</h6>
                   <p>{name}</p>
@@ -120,7 +109,7 @@ export default function Card({data,removeCard}) {
               )}
               {/* {Alert Section} */}
               {showAlert && (
-                <div className="alert alert-success" role="alert">
+                <div className="alert alert-danger" role="alert">
                   <h4 className="alert-heading">Are you sure?</h4>
                   <p>
                     Your Card will be removed and can't be accessed again!.

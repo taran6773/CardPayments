@@ -74,8 +74,9 @@ app.post("/delete",async(req,res)=>{
 
 app.post("/update",async(req,res)=>{
     let y=req.body
+    console.log(y)
     // let user = new CardPayment();
-    await CardPayment.updateOne({name: y.name, expiry: y.expiry}).catch(e=>{
+    await CardPayment.findOneAndUpdate({cardNumber: y.number},{name: y.name, expiry: y.expiry}).catch(e=>{
         console.log(e)
     })
 
