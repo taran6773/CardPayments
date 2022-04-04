@@ -43,8 +43,7 @@ Button{
     font-weight: 600
 }
 .accordion-button:hover{
-    background-color: gray;
-    color:black
+    background-color: antiquewhite;
 }
 .innerCard>p{
     color: gray;
@@ -57,6 +56,9 @@ Button{
   .accordion-body{
       border: 3px solid black;
       font-weight: 600
+  }
+  .accordion-body:hover{
+      background-color: antiquewhite;
   }
   .accordion-header{
       border: 1px solid transparent;
