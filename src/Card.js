@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "./Card.css";
+import Button from '@mui/material/Button';
 
 export default function Card({data,removeCard}) {
   let cardNumber=data.cardNumber
@@ -62,20 +63,24 @@ export default function Card({data,removeCard}) {
                   <h6>Expiry Date</h6>
                   <p>{expiry.toString().slice(0,7)}</p>
                   <div style={{ display: "flex" }}>
-                    <button
+                    <Button
+                     variant="contained"
+                     style={{backgroundColor:"maroon", margin:"5px"}}
                       onClick={() => {
                         setShowEdit(!showEdit);
                       }}
                     >
                       edit
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                    variant="contained"
+                    style={{backgroundColor:"maroon", margin:"5px"}}
                       onClick={() => {
                         setShowAlert(!showAlert);
                       }}
                     >
                       delete
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -95,15 +100,18 @@ export default function Card({data,removeCard}) {
                     ></input>
                   </div>
                   <div style={{ display: "flex", alignItems: "center" }}>
-                    <button
+                    <Button
+                    variant="contained"
+                    style={{backgroundColor:"maroon", margin:"5px"}}
                       onClick={() => {
                         handleChange();
                         setShowEdit(false);
                       }}
                     >
                       Submit
-                    </button>
-                    <button onClick={() => setShowEdit(false)}>Cancel</button>
+                    </Button>
+                    <Button variant="contained"
+                    style={{backgroundColor:"maroon", margin:"5px"}} onClick={() => setShowEdit(false)}>Cancel</Button>
                   </div>
                 </div>
               )}
@@ -116,17 +124,22 @@ export default function Card({data,removeCard}) {
                     Click Yes to confirm!
                   </p>
                   <hr />
-                  <button onClick={()=>{
+                  <Button 
+                  variant="contained"
+                  style={{backgroundColor:"maroon", margin:"5px"}}
+                  onClick={()=>{
                       removeCard(data.cardNumber)
                       setShowAlert(!showAlert)
-                      }}>yes</button>
-                  <button
+                      }}>yes</Button>
+                  <Button
+                  variant="contained"
+                  style={{backgroundColor:"maroon", margin:"5px"}}
                     onClick={() => {
                       setShowAlert(!showAlert);
                     }}
                   >
                     No
-                  </button>
+                  </Button>
                 </div>
               )}
               {/* {Adding New element} */}

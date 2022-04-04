@@ -2,6 +2,8 @@ import { useState,useEffect } from "react";
 import Card from "./Card";
 import "./App.css";
 import axios from "axios";
+import Button from '@mui/material/Button';
+
 
 const dataclass = {cardNumber:'',name:'',expiry:''};
 
@@ -71,19 +73,23 @@ function App() {
       }
         />
       )}
-      <button className='addButton1' onClick={() => setTap(!tap)}> {tap?'Close':"Add"} </button>
+      <Button variant="contained"
+        style={{backgroundColor:"maroon", margin:"5px"}} 
+        className='addButton1' onClick={() => setTap(!tap)}> {tap?'Close':"Add"} </Button>
     {tap && 
     <form>
         <input placeholder='number' value={data.cardNumber} type='number' onChange={e=>setData({...data,cardNumber:e.target.value})}/>
         <input placeholder='name' value={data.name} type='text' onChange={e=>setData({...data,name:e.target.value})}/>
         <input placeholder='expiry' value={data.expiry} type='month' onChange={e=>setData({...data,expiry:e.target.value})}/>
         {error &&<p style={{color:'red'}}>{error}</p>}
-        <button 
+        <Button 
+        variant="contained"
+        style={{backgroundColor:"maroon", margin:"5px", color:"white"}}
           disabled={!data.cardNumber || !data.name ||!data.expiry}
           onClick={addCard}
           className='addButton'
           type='submit'
-        >Submit</button>
+        >Submit</Button>
     </form>
       }
       </div>
